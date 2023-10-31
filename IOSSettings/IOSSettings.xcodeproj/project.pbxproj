@@ -14,6 +14,7 @@
 		D89403572AF0CDD700A15484 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89403552AF0CDD700A15484 /* LaunchScreen.storyboard */; };
 		D89403642AF0D31B00A15484 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89403632AF0D31B00A15484 /* SettingsModel.swift */; };
 		D89403672AF0D96400A15484 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D89403662AF0D96400A15484 /* SnapKit */; };
+		D894036A2AF0E30B00A15484 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89403692AF0E30B00A15484 /* SettingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		D89403562AF0CDD700A15484 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D89403582AF0CDD700A15484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D89403632AF0D31B00A15484 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		D89403692AF0E30B00A15484 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		D894035F2AF0CEA400A15484 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D89403682AF0E2DD00A15484 /* Cells */,
 				D89403552AF0CDD700A15484 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -107,6 +110,14 @@
 				D894034C2AF0CDD600A15484 /* SceneDelegate.swift */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D89403682AF0E2DD00A15484 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D89403692AF0E30B00A15484 /* SettingCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				D89403642AF0D31B00A15484 /* SettingsModel.swift in Sources */,
 				D894034F2AF0CDD600A15484 /* SettingsViewController.swift in Sources */,
 				D894034B2AF0CDD600A15484 /* AppDelegate.swift in Sources */,
+				D894036A2AF0E30B00A15484 /* SettingCell.swift in Sources */,
 				D894034D2AF0CDD600A15484 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
