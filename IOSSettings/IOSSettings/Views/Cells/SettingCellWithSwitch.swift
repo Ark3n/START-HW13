@@ -1,5 +1,5 @@
 //
-//  SettingCell.swift
+//  SettingCellWithSwitch.swift
 //  IOSSettings
 //
 //  Created by Arken Sarsenov on 31.10.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SettingCell: UITableViewCell {
+final class SettingCellWithSwitch: UITableViewCell {
 
     // MARK: - Properties
     private lazy var iconImageView: UIImageView = {
@@ -27,12 +27,10 @@ final class SettingCell: UITableViewCell {
         label.text = "Airplane Mode"
         return label
     }()
-    private lazy var stateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
-        label.textColor = .systemGray
-        label.text = "Airplane Mode"
-        return label
+    private lazy var switchElement: UISwitch = {
+       let eliment = UISwitch()
+        eliment.setOn(true, animated: true)
+        return eliment
     }()
     
     //MARK: - Cell Lifecycle
@@ -47,6 +45,7 @@ final class SettingCell: UITableViewCell {
     private func setupUI() {
         addSubview(iconImageView)
         addSubview(titleLabel)
+        addSubview(switchElement)
     }
     private func setupConstraints() {
         iconImageView.snp.makeConstraints { make in
@@ -59,19 +58,17 @@ final class SettingCell: UITableViewCell {
             make.left.equalTo(iconImageView.snp.right).offset(16)
             make.centerY.equalTo(iconImageView.snp.centerY)
         }
+        switchElement.snp.makeConstraints { make in
+            make.centerY.equalTo(iconImageView)
+            make.right.equalTo(contentView).offset(-20)
+            make.height.equalTo(30)
+        }
     }
    // MARK: - Assign data from Model
-    public func fillSeetings(image: UIImage, title: String, color: UIColor, state: String?) {
+    public func fillSeetings(image: UIImage, title: String, color: UIColor) {
         iconImageView.image = image
         iconImageView.backgroundColor = color
         titleLabel.text = title
-        if state != nil {
-            stateLabel.text = state
-            contentView.addSubview(stateLabel)
-            stateLabel.snp.makeConstraints { make in
-                make.centerY.equalTo(iconImageView.snp.centerY)
-                make.right.equalTo(contentView.snp.right).offset(-20)
-            }
-        }
     }
 }
+

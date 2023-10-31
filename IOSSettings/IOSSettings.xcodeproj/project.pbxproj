@@ -15,6 +15,7 @@
 		D89403642AF0D31B00A15484 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89403632AF0D31B00A15484 /* SettingsModel.swift */; };
 		D89403672AF0D96400A15484 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D89403662AF0D96400A15484 /* SnapKit */; };
 		D894036A2AF0E30B00A15484 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89403692AF0E30B00A15484 /* SettingCell.swift */; };
+		D894036C2AF11C3C00A15484 /* SettingCellWithSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894036B2AF11C3C00A15484 /* SettingCellWithSwitch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		D89403582AF0CDD700A15484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D89403632AF0D31B00A15484 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		D89403692AF0E30B00A15484 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		D894036B2AF11C3C00A15484 /* SettingCellWithSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellWithSwitch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				D89403692AF0E30B00A15484 /* SettingCell.swift */,
+				D894036B2AF11C3C00A15484 /* SettingCellWithSwitch.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			files = (
 				D89403642AF0D31B00A15484 /* SettingsModel.swift in Sources */,
 				D894034F2AF0CDD600A15484 /* SettingsViewController.swift in Sources */,
+				D894036C2AF11C3C00A15484 /* SettingCellWithSwitch.swift in Sources */,
 				D894034B2AF0CDD600A15484 /* AppDelegate.swift in Sources */,
 				D894036A2AF0E30B00A15484 /* SettingCell.swift in Sources */,
 				D894034D2AF0CDD600A15484 /* SceneDelegate.swift in Sources */,
