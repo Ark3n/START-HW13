@@ -9,13 +9,15 @@ import UIKit
 final class SettingsViewController: UIViewController {
 
     // MARK: - Properties
-    var settingsGroup: [SettingsGroup]?
+    var settingsGroup = SettingsGroup.allGroup()
     let cell = "cell"
     let cellWithSwitch = "cellWithSwitch"
+    let cellWithState = "cellWithState"
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(SettingCell.self, forCellReuseIdentifier: cell)
         tableView.register(SettingCellWithSwitch.self, forCellReuseIdentifier: cellWithSwitch)
+        tableView.register(SettingCellWithState.self, forCellReuseIdentifier: cellWithState)
         tableView.dataSource = self
         tableView.delegate  = self
        return tableView
@@ -26,7 +28,6 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupContstraints()
-        settingsGroup = SettingsGroup.allGroup()
     }
     
     // MARK: -  SetupUI
@@ -46,35 +47,26 @@ final class SettingsViewController: UIViewController {
 // MARK: - UITableView Delegate and Datasource methods
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        settingsGroup?.count ?? 0
+        settingsGroup.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsGroup?[section].settings.count ?? 0
+        return settingsGroup[section].settings.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let isCellWithSwitch = settingsGroup?[indexPath.section].settings[indexPath.row].switchElement {
-            if isCellWithSwitch {
-                guard let cellWithSwitch = tableView.dequeueReusableCell(withIdentifier: cellWithSwitch, for: indexPath) as? SettingCellWithSwitch,
-                      let title = settingsGroup?[indexPath.section].settings[indexPath.row].title,
-                      let icon = settingsGroup?[indexPath.section].settings[indexPath.row].icon,
-                      let color = settingsGroup?[indexPath.section].settings[indexPath.row].color
-                else { return UITableViewCell() }
-                cellWithSwitch.fillSeetings(image: icon, title: title, color: color)
-                cellWithSwitch.accessoryType = .disclosureIndicator
-                return cellWithSwitch
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as? SettingCell,
-                      let title = settingsGroup?[indexPath.section].settings[indexPath.row].title,
-                      let icon = settingsGroup?[indexPath.section].settings[indexPath.row].icon,
-                      let color = settingsGroup?[indexPath.section].settings[indexPath.row].color,
-                      let state = settingsGroup?[indexPath.section].settings[indexPath.row].settingState
-                else { return UITableViewCell() }
-                cell.fillSeetings(image: icon, title: title, color: color, state: state)
-                cell.accessoryType = .disclosureIndicator
-                return cell
-            }
+        let setting = settingsGroup[indexPath.section].settings[indexPath.row]
+        if setting.switchElement == true {
+            guard let cellWithSwitch = tableView.dequeueReusableCell(withIdentifier: cellWithSwitch, for: indexPath) as? SettingCellWithSwitch else { return UITableViewCell() }
+            cellWithSwitch.fillSeetings(image: setting.icon, title: setting.title, color: setting.color)
+            return cellWithSwitch
         }
-        return UITableViewCell()
+        if let settingState = setting.settingState {
+            guard let cellWithState = tableView.dequeueReusableCell(withIdentifier: cellWithState, for: indexPath) as? SettingCellWithState else { return UITableViewCell() }
+            cellWithState.fillSeetings(image: setting.icon, title: setting.title, color: setting.color, state: settingState)
+            return cellWithState
+        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as? SettingCell else { return UITableViewCell() }
+        cell.fillSeetings(image: setting.icon, title: setting.title, color: setting.color)
+        return cell
     }
 }
 extension SettingsViewController: UITableViewDelegate {
@@ -86,3 +78,42 @@ extension SettingsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+
+
+
+//if let isCellWithSwitch = settingsGroup?[indexPath.section].settings[indexPath.row].switchElement {
+//    if isCellWithSwitch {
+//        guard let cellWithSwitch = tableView.dequeueReusableCell(withIdentifier: cellWithSwitch, for: indexPath) as? SettingCellWithSwitch,
+//              let title = settingsGroup?[indexPath.section].settings[indexPath.row].title,
+//              let icon = settingsGroup?[indexPath.section].settings[indexPath.row].icon,
+//              let color = settingsGroup?[indexPath.section].settings[indexPath.row].color
+//        else { return UITableViewCell() }
+//        cellWithSwitch.fillSeetings(image: icon, title: title, color: color)
+//        cellWithSwitch.accessoryType = .disclosureIndicator
+//        return cellWithSwitch
+//    }
+//
+//    if let isStateNotEmpty = settingsGroup?[indexPath.section].settings[indexPath.row].settingState {
+//        if isStateNotEmpty.isEmpty {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as? SettingCell,
+//                  let title = settingsGroup?[indexPath.section].settings[indexPath.row].title,
+//                  let icon = settingsGroup?[indexPath.section].settings[indexPath.row].icon,
+//                  let color = settingsGroup?[indexPath.section].settings[indexPath.row].color
+//            else { return UITableViewCell() }
+//            cell.fillSeetings(image: icon, title: title, color: color)
+//            cell.accessoryType = .disclosureIndicator
+//            return cell
+//        } else {
+//            guard let cellWithState = tableView.dequeueReusableCell(withIdentifier: cellWithState, for: indexPath) as? SettingCellWithState,
+//                  let title = settingsGroup?[indexPath.section].settings[indexPath.row].title,
+//                  let icon = settingsGroup?[indexPath.section].settings[indexPath.row].icon,
+//                  let color = settingsGroup?[indexPath.section].settings[indexPath.row].color,
+//                  let state = settingsGroup?[indexPath.section].settings[indexPath.row].settingState
+//            else { return UITableViewCell() }
+//            cellWithState.fillSeetings(image: icon, title: title, color: color, state: state)
+//            cellWithState.accessoryType = .disclosureIndicator
+//            return cellWithState
+//        }
+//    }
+//}

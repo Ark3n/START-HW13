@@ -1,5 +1,5 @@
 //
-//  SettingCellWithSwitch.swift
+//  SeetingCellWithState.swift
 //  IOSSettings
 //
 //  Created by Arken Sarsenov on 31.10.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SettingCellWithSwitch: UITableViewCell {
+final class SettingCellWithState: UITableViewCell {
 
     // MARK: - Properties
     private lazy var iconImageView: UIImageView = {
@@ -27,12 +27,14 @@ final class SettingCellWithSwitch: UITableViewCell {
         label.text = "Airplane Mode"
         return label
     }()
-    private lazy var switchElement: UISwitch = {
-       let eliment = UISwitch()
-        eliment.setOn(true, animated: true)
-        return eliment
+    private lazy var stateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textColor = .systemGray
+        label.text = "Airplane Mode"
+        return label
     }()
-    
+
     //MARK: - Cell Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,7 +47,7 @@ final class SettingCellWithSwitch: UITableViewCell {
     private func setupUI() {
         addSubview(iconImageView)
         addSubview(titleLabel)
-        addSubview(switchElement)
+        addSubview(stateLabel)
     }
     private func setupConstraints() {
         iconImageView.snp.makeConstraints { make in
@@ -58,17 +60,18 @@ final class SettingCellWithSwitch: UITableViewCell {
             make.left.equalTo(iconImageView.snp.right).offset(16)
             make.centerY.equalTo(iconImageView.snp.centerY)
         }
-        switchElement.snp.makeConstraints { make in
-            make.centerY.equalTo(iconImageView)
-            make.right.equalTo(contentView).offset(-20)
-            make.height.equalTo(30)
+        
+        stateLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(iconImageView.snp.centerY)
+            make.right.equalTo(contentView.snp.right).offset(-20)
         }
     }
    // MARK: - Assign data from Model
-    public func fillSeetings(image: UIImage?, title: String, color: UIColor) {
+    public func fillSeetings(image: UIImage?, title: String, color: UIColor, state: String) {
         iconImageView.image = image
         iconImageView.backgroundColor = color
         titleLabel.text = title
+        stateLabel.text = state
     }
 }
 

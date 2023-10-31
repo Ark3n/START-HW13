@@ -27,14 +27,7 @@ final class SettingCell: UITableViewCell {
         label.text = "Airplane Mode"
         return label
     }()
-    private lazy var stateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
-        label.textColor = .systemGray
-        label.text = "Airplane Mode"
-        return label
-    }()
-    
+
     //MARK: - Cell Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -61,17 +54,9 @@ final class SettingCell: UITableViewCell {
         }
     }
    // MARK: - Assign data from Model
-    public func fillSeetings(image: UIImage, title: String, color: UIColor, state: String?) {
+    public func fillSeetings(image: UIImage?, title: String, color: UIColor) {
         iconImageView.image = image
         iconImageView.backgroundColor = color
         titleLabel.text = title
-        if state != nil {
-            stateLabel.text = state
-            contentView.addSubview(stateLabel)
-            stateLabel.snp.makeConstraints { make in
-                make.centerY.equalTo(iconImageView.snp.centerY)
-                make.right.equalTo(contentView.snp.right).offset(-20)
-            }
-        }
     }
 }
