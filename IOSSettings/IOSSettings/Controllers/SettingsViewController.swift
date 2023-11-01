@@ -14,7 +14,7 @@ final class SettingsViewController: UIViewController {
     let cellWithSwitch = "cellWithSwitch"
     let cellWithState = "cellWithState"
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(SettingCell.self, forCellReuseIdentifier: cell)
         tableView.register(SettingCellWithSwitch.self, forCellReuseIdentifier: cellWithSwitch)
         tableView.register(SettingCellWithState.self, forCellReuseIdentifier: cellWithState)
