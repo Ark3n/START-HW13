@@ -52,7 +52,7 @@ extension SettingsGroup {
     
     public static func  getGeneralGroup()-> SettingsGroup {
         let settings = [
-            Setting(icon: UIImage(systemName: "wifi"), title: "General", switchElement: false, color: .systemGray),
+            Setting(icon: UIImage(systemName: "gear"), title: "General", switchElement: false, color: .systemGray),
             Setting(icon: UIImage(systemName: "wifi"), title: "Control Center", switchElement: false, color: .systemGray),
             Setting(icon: UIImage(systemName: "textformat.size"), title: "Displat & Brightness", switchElement: false),
             Setting(icon: UIImage(systemName: "wifi"), title: "Home Screen", switchElement: false),

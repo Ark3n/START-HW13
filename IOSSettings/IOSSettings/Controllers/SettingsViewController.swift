@@ -7,7 +7,7 @@
 import UIKit
 
 final class SettingsViewController: UIViewController {
-
+    
     // MARK: - Properties
     var settingsGroup = SettingsGroup.allGroup()
     let cell = "cell"
@@ -20,7 +20,7 @@ final class SettingsViewController: UIViewController {
         tableView.register(SettingCellWithState.self, forCellReuseIdentifier: cellWithState)
         tableView.dataSource = self
         tableView.delegate  = self
-       return tableView
+        return tableView
     }()
     
     // MARK: - View lifeCycle
@@ -62,10 +62,12 @@ extension SettingsViewController: UITableViewDataSource {
         if let settingState = setting.settingState {
             guard let cellWithState = tableView.dequeueReusableCell(withIdentifier: cellWithState, for: indexPath) as? SettingCellWithState else { return UITableViewCell() }
             cellWithState.fillSeetings(image: setting.icon, title: setting.title, color: setting.color, state: settingState)
+            cellWithState.accessoryType = .disclosureIndicator
             return cellWithState
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as? SettingCell else { return UITableViewCell() }
         cell.fillSeetings(image: setting.icon, title: setting.title, color: setting.color)
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
@@ -73,10 +75,14 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let title = settingsGroup[indexPath.section].settings[indexPath.row].title
-        print("DEBUG: нажата ячейка \(title)")
+        let setting = settingsGroup[indexPath.section].settings[indexPath.row]
+        print("DEBUG: нажата ячейка \(setting.title)")
+        if indexPath != [0, 0] {
+            let detailVC = DetailViewController()
+            detailVC.setting = setting
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }

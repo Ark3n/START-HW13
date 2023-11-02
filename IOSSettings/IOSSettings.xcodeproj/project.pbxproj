@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D84E361B2AF37FF9009127C9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E361A2AF37FF9009127C9 /* DetailViewController.swift */; };
 		D894034B2AF0CDD600A15484 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894034A2AF0CDD600A15484 /* AppDelegate.swift */; };
 		D894034D2AF0CDD600A15484 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894034C2AF0CDD600A15484 /* SceneDelegate.swift */; };
 		D894034F2AF0CDD600A15484 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894034E2AF0CDD600A15484 /* SettingsViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D84E361A2AF37FF9009127C9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D89403472AF0CDD600A15484 /* IOSSettings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSSettings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D894034A2AF0CDD600A15484 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D894034C2AF0CDD600A15484 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D894034E2AF0CDD600A15484 /* SettingsViewController.swift */,
+				D84E361A2AF37FF9009127C9 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84E361B2AF37FF9009127C9 /* DetailViewController.swift in Sources */,
 				D89403642AF0D31B00A15484 /* SettingsModel.swift in Sources */,
 				D894034F2AF0CDD600A15484 /* SettingsViewController.swift in Sources */,
 				D894036C2AF11C3C00A15484 /* SettingCellWithSwitch.swift in Sources */,

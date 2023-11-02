@@ -15,9 +15,8 @@ final class SettingCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemBlue
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 7
         imageView.tintColor = .white
-        imageView.image = UIImage(systemName: "personalhotspot")
         imageView.contentMode = .center
         return imageView
     }()
@@ -45,7 +44,7 @@ final class SettingCell: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(contentView).offset(10)
-            make.height.equalTo(35)
+            make.height.equalTo(30)
             make.width.equalTo(30)
         }
         titleLabel.snp.makeConstraints { make in
@@ -55,7 +54,11 @@ final class SettingCell: UITableViewCell {
     }
    // MARK: - Assign data from Model
     public func fillSeetings(image: UIImage?, title: String, color: UIColor) {
-        iconImageView.image = image
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imgView.image = image
+        imgView.clipsToBounds = true
+        imgView.contentMode = .center
+        iconImageView.addSubview(imgView)
         iconImageView.backgroundColor = color
         titleLabel.text = title
     }

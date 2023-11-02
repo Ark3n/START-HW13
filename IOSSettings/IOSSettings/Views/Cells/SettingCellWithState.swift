@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class SettingCellWithState: UITableViewCell {
-
+    
     // MARK: - Properties
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -17,7 +17,6 @@ final class SettingCellWithState: UITableViewCell {
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 5
         imageView.tintColor = .white
-        imageView.image = UIImage(systemName: "personalhotspot")
         imageView.contentMode = .center
         return imageView
     }()
@@ -34,7 +33,7 @@ final class SettingCellWithState: UITableViewCell {
         label.text = "Airplane Mode"
         return label
     }()
-
+    
     //MARK: - Cell Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,7 +52,7 @@ final class SettingCellWithState: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(contentView).offset(10)
-            make.height.equalTo(35)
+            make.height.equalTo(30)
             make.width.equalTo(30)
         }
         titleLabel.snp.makeConstraints { make in
@@ -66,9 +65,13 @@ final class SettingCellWithState: UITableViewCell {
             make.right.equalTo(contentView.snp.right).offset(-20)
         }
     }
-   // MARK: - Assign data from Model
+    // MARK: - Assign data from Model
     public func fillSeetings(image: UIImage?, title: String, color: UIColor, state: String) {
-        iconImageView.image = image
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imgView.image = image
+        imgView.clipsToBounds = true
+        imgView.contentMode = .center
+        iconImageView.addSubview(imgView)
         iconImageView.backgroundColor = color
         titleLabel.text = title
         stateLabel.text = state

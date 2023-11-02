@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class SettingCellWithSwitch: UITableViewCell {
-
+    
     // MARK: - Properties
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -17,7 +17,6 @@ final class SettingCellWithSwitch: UITableViewCell {
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 5
         imageView.tintColor = .white
-        imageView.image = UIImage(systemName: "personalhotspot")
         imageView.contentMode = .center
         return imageView
     }()
@@ -28,7 +27,7 @@ final class SettingCellWithSwitch: UITableViewCell {
         return label
     }()
     private lazy var switchElement: UISwitch = {
-       let eliment = UISwitch()
+        let eliment = UISwitch()
         eliment.setOn(true, animated: true)
         return eliment
     }()
@@ -51,7 +50,7 @@ final class SettingCellWithSwitch: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(contentView).offset(10)
-            make.height.equalTo(35)
+            make.height.equalTo(30)
             make.width.equalTo(30)
         }
         titleLabel.snp.makeConstraints { make in
@@ -64,9 +63,13 @@ final class SettingCellWithSwitch: UITableViewCell {
             make.height.equalTo(30)
         }
     }
-   // MARK: - Assign data from Model
+    // MARK: - Assign data from Model
     public func fillSeetings(image: UIImage?, title: String, color: UIColor) {
-        iconImageView.image = image
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imgView.image = image
+        imgView.clipsToBounds = true
+        imgView.contentMode = .center
+        iconImageView.addSubview(imgView)
         iconImageView.backgroundColor = color
         titleLabel.text = title
     }
