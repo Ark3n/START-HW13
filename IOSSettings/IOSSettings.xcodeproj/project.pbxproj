@@ -47,6 +47,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D8802F7F2B0CF48B00F26F7E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D89403622AF0CEBF00A15484 /* AppDelegate */,
+				D8802F802B0CF51B00F26F7E /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D8802F802B0CF51B00F26F7E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D89403612AF0CEB800A15484 /* Model */,
+				D894035F2AF0CEA400A15484 /* Views */,
+				D89403602AF0CEAF00A15484 /* Controllers */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		D894033E2AF0CDD600A15484 = {
 			isa = PBXGroup;
 			children = (
@@ -66,22 +85,19 @@
 		D89403492AF0CDD600A15484 /* IOSSettings */ = {
 			isa = PBXGroup;
 			children = (
-				D89403622AF0CEBF00A15484 /* AppDelegate */,
-				D89403612AF0CEB800A15484 /* Model */,
-				D89403602AF0CEAF00A15484 /* Controllers */,
-				D894035F2AF0CEA400A15484 /* Views */,
-				D894035E2AF0CE9400A15484 /* Assets */,
+				D8802F7F2B0CF48B00F26F7E /* Sources */,
+				D894035E2AF0CE9400A15484 /* Resources */,
 			);
 			path = IOSSettings;
 			sourceTree = "<group>";
 		};
-		D894035E2AF0CE9400A15484 /* Assets */ = {
+		D894035E2AF0CE9400A15484 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				D89403582AF0CDD700A15484 /* Info.plist */,
 				D89403532AF0CDD700A15484 /* Assets.xcassets */,
 			);
-			path = Assets;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D894035F2AF0CEA400A15484 /* Views */ = {
@@ -352,7 +368,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IOSSettings/Assets/Info.plist;
+				INFOPLIST_FILE = IOSSettings/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -379,7 +395,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IOSSettings/Assets/Info.plist;
+				INFOPLIST_FILE = IOSSettings/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
