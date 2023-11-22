@@ -1,15 +1,25 @@
-
+//
+//  SettingsView.swift
 //  IOSSettings
 //
-//  Created by Arken Sarsenov on 31.10.2023.
+//  Created by Arken Sarsenov on 22.11.2023.
 //
 
 import UIKit
+import SnapKit
 
-final class SettingsViewController: UIViewController {
+// MARK: - SettingsView Delegate Protocol
+protocol SettingsViewDelegateProtocol: AnyObject {
+    func settingDidSelect(setting: Setting)
+}
+
+final class SettingsView: UIView {
     
     // MARK: - Properties
-    var settingsGroup = SettingsGroup.allGroup()
+    var settingsGroup: [SettingsGroup] = []
+    
+    weak var delegate: SettingsViewDelegateProtocol?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(SettingCell.self, forCellReuseIdentifier: SettingCell.identifier)
@@ -20,29 +30,32 @@ final class SettingsViewController: UIViewController {
         return tableView
     }()
     
-    // MARK: - View lifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - View Lifecycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupUI()
         setupContstraints()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: -  SetupUI
     private func setupUI() {
-        title = "Settings"
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
-        view.addSubview(tableView)
+        addSubview(tableView)
     }
     private func setupContstraints() {
         tableView.snp.makeConstraints { make in
             make.top.bottom.left.right.equalToSuperview()
         }
     }
+    public func configureView(with settings: [SettingsGroup]) {
+        settingsGroup = settings
+    }
 }
 
 // MARK: - UITableView Delegate and Datasource methods
-extension SettingsViewController: UITableViewDataSource {
+extension SettingsView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         settingsGroup.count
     }
@@ -68,7 +81,7 @@ extension SettingsViewController: UITableViewDataSource {
         return cell
     }
 }
-extension SettingsViewController: UITableViewDelegate {
+extension SettingsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
@@ -77,9 +90,8 @@ extension SettingsViewController: UITableViewDelegate {
         let setting = settingsGroup[indexPath.section].settings[indexPath.row]
         print("DEBUG: нажата ячейка \(setting.title)")
         if indexPath != [0, 0] {
-            let detailVC = DetailViewController()
-            detailVC.setting = setting
-            navigationController?.pushViewController(detailVC, animated: true)
+            delegate?.settingDidSelect(setting: setting)
         }
     }
 }
+

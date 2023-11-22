@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class DetailViewController: UIViewController {
+final class DetailController: UIViewController {
     // MARK: - Properties
     var setting: Setting?
     private var detailsView: DetailsView? {
