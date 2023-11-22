@@ -11,6 +11,7 @@ import SnapKit
 final class SettingCellWithSwitch: UITableViewCell {
     
     // MARK: - Properties
+    static let identifier = "cellWithSwitch"
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemBlue

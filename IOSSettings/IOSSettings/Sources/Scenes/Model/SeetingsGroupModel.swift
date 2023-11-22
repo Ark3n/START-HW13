@@ -7,15 +7,7 @@
 
 import UIKit
 
-struct Setting {
-    var icon: UIImage?
-    var title: String
-    var settingState: String?
-    var switchElement: Bool
-    var color: UIColor = .systemBlue
-}
-
-class SettingsGroup {
+final class SettingsGroup {
     var title: String
     var settings: [Setting]
     

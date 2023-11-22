@@ -11,6 +11,7 @@ import SnapKit
 final class SettingCellWithState: UITableViewCell {
     
     // MARK: - Properties
+    static let identifier = "cellWithState"
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemBlue
