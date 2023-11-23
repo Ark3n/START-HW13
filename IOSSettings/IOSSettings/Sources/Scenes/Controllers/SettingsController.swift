@@ -12,6 +12,10 @@ final class SettingsController: UIViewController {
     var settingsGroup = SettingsGroup.allGroup()
     let settingsView = SettingsView()
     
+    override func loadView() {
+        view = settingsView
+    }
+    
     // MARK: - View lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +24,6 @@ final class SettingsController: UIViewController {
 
     // MARK: -  SetupUI
     private func setupUI() {
-        view = settingsView
         settingsView.delegate = self
         settingsView.configureView(with: settingsGroup)
         title = "Settings"

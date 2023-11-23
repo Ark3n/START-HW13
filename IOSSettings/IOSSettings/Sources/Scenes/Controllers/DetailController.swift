@@ -15,17 +15,24 @@ final class DetailController: UIViewController {
         guard isViewLoaded else { return nil}
         return view as? DetailsView
     }
+    
+    override func loadView() {
+        view = DetailsView()
+    }
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigation()
         setupViews()
+    }
+    
+    private func configureNavigation() {
+        navigationController?.navigationBar.tintColor = .black
+        title = setting?.title
     }
     
     // MARK: - SetupLayout
     private func setupViews() {
-        view = DetailsView()
-        navigationController?.navigationBar.tintColor = .black
-        title = setting?.title
         detailsView?.configureView(image: setting?.icon)
     }
 }
